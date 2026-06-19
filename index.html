@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
   <title>Chao Wen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -724,33 +725,68 @@
         <div class="contact-details">
           <div class="contact-item">
             <span class="contact-item-label">Email</span>
-            <a href="mailto:hello@chaowen.com" class="contact-item-value">hello@chaowen.com</a>
+            <span class="contact-item-value">chao.wen@compass.com</span>
           </div>
           <div class="contact-item">
             <span class="contact-item-label">Phone</span>
-            <a href="tel:+1234567890" class="contact-item-value">(123) 456-7890</a>
+            <span class="contact-item-value">408-835-6704</span>
           </div>
           <div class="contact-item">
-            <span class="contact-item-label">Location</span>
-            <span class="contact-item-value">Available nationwide</span>
+            <span class="contact-item-label">Office Address</span>
+            <span class="contact-item-value">1377 El Camino Real, Menlo Park, CA 94025</span>
           </div>
         </div>
       </div>
-      <form class="contact-form" onsubmit="return false;">
+      <form class="contact-form" id="contact-form" novalidate action="https://formsubmit.co/elaine.cai@compass.com" method="POST">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" placeholder="Your name">
+          <input type="text" id="name" placeholder="Your name" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" id="email" placeholder="your@email.com">
+          <span id="email-error" style="display:none;color:#c0392b;font-size:0.82rem;margin-top:0.3rem;">Invalid email</span>
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" rows="5" placeholder="How can I help you?"></textarea>
+          <textarea id="message" rows="5" placeholder="How can I help you?" required></textarea>
         </div>
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New message from your website">
+        <input type="hidden" name="_next" value="https://chaowenpages.github.io/#contact">
         <button type="submit" class="form-submit">Send message</button>
       </form>
+      <script>
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const email = document.getElementById('email').value.trim();
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          const emailError = document.getElementById('email-error');
+          if (!emailRegex.test(email)) {
+            emailError.style.display = 'block';
+            document.getElementById('email').focus();
+            return;
+          }
+          emailError.style.display = 'none';
+          const btn = this.querySelector('.form-submit');
+          btn.textContent = 'Sending...';
+          btn.disabled = true;
+          const res = await fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            btn.textContent = 'Send message';
+            btn.disabled = false;
+            this.reset();
+            document.getElementById('success-dialog').style.display = 'flex';
+          } else {
+            btn.textContent = 'Failed. Try again.';
+            btn.disabled = false;
+          }
+        });
+      </script>
     </div>
   </section>
 
@@ -763,6 +799,14 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </footer>
+
+  <!-- SUCCESS DIALOG -->
+  <div id="success-dialog" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;">
+    <div style="background:#fff;padding:2.5rem 3rem;text-align:center;max-width:360px;width:90%;">
+      <p style="font-size:1.1rem;font-weight:500;margin-bottom:1.5rem;">Message sent.</p>
+      <button onclick="document.getElementById('success-dialog').style.display='none'" style="background:#111;color:#fff;border:none;padding:0.7rem 2rem;font-size:0.85rem;cursor:pointer;letter-spacing:0.08em;">OK</button>
+    </div>
+  </div>
 
   <button id="back-to-top" aria-label="Back to top">&#8963;</button>
 

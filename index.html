@@ -850,7 +850,10 @@
     window.addEventListener('scroll', () => {
       btn.classList.toggle('visible', window.scrollY > 400);
     });
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    btn.addEventListener('click', () => {
+      history.pushState(null, '', window.location.pathname);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 
 </body>

@@ -21,7 +21,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: Arial, sans-serif;
       color: var(--black);
       background: var(--white);
       font-size: 15px;
@@ -45,11 +45,10 @@
     }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Arial, sans-serif;
       font-size: 1.3rem;
       font-weight: 400;
       letter-spacing: 0.08em;
-      text-transform: uppercase;
       color: var(--white);
       text-decoration: none;
     }
@@ -63,10 +62,9 @@
     .nav-links a {
       text-decoration: none;
       color: var(--white);
-      font-size: 0.78rem;
+      font-size: 1rem;
       font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      letter-spacing: 0.05em;
       opacity: 0.7;
       transition: opacity 0.2s;
     }
@@ -166,7 +164,7 @@
     }
 
     .hero-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Arial, sans-serif;
       font-size: clamp(3.5rem, 8vw, 7rem);
       font-weight: 300;
       line-height: 1.05;
@@ -259,7 +257,7 @@
     }
 
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Arial, sans-serif;
       font-size: clamp(2rem, 4vw, 3.2rem);
       font-weight: 300;
       line-height: 1.2;
@@ -331,7 +329,7 @@
     }
 
     .stat-number {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Arial, sans-serif;
       font-size: 2.4rem;
       font-weight: 300;
       color: var(--black);
@@ -371,7 +369,7 @@
     .expertise-card:hover { background: #ece8e0; }
 
     .card-number {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Arial, sans-serif;
       font-size: 3rem;
       font-weight: 300;
       color: var(--accent);
@@ -380,7 +378,7 @@
     }
 
     .card-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Arial, sans-serif;
       font-size: 1.4rem;
       font-weight: 400;
       margin-bottom: 0.8rem;
@@ -414,7 +412,7 @@
     }
 
     .testimonial-quote {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Arial, sans-serif;
       font-size: 1.15rem;
       font-weight: 300;
       font-style: italic;
@@ -503,7 +501,7 @@
       border-bottom: 1px solid rgba(0,0,0,0.2);
       background: transparent;
       padding: 0.6rem 0;
-      font-family: 'Inter', sans-serif;
+      font-family: Arial, sans-serif;
       font-size: 0.9rem;
       color: var(--black);
       outline: none;
@@ -522,7 +520,7 @@
       color: var(--white);
       border: none;
       padding: 0.85rem 2.5rem;
-      font-family: 'Inter', sans-serif;
+      font-family: Arial, sans-serif;
       font-size: 0.72rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -545,7 +543,7 @@
     }
 
     .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Arial, sans-serif;
       font-size: 1rem;
       font-weight: 400;
       letter-spacing: 0.12em;
@@ -572,23 +570,42 @@
     /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 1.2rem 1.5rem; }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: #000;
-        z-index: 99;
-        justify-content: center;
-        align-items: center;
-      }
-      .nav-links.open { display: flex; }
-      .nav-links a { font-size: 1.2rem; padding: 1rem 0; opacity: 1; }
+      .nav-links { display: none; }
       .hamburger { display: flex; }
       .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
       .hamburger.open span:nth-child(2) { opacity: 0; }
       .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: #000;
+        z-index: 999;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 1.4rem;
+        letter-spacing: 0.12em;
+        opacity: 0.85;
+      }
+      .mobile-menu a:hover { opacity: 1; color: var(--accent); }
+      .mobile-close {
+        position: absolute;
+        top: 1.4rem;
+        right: 1.5rem;
+        background: none;
+        border: none;
+        color: var(--white);
+        font-size: 2rem;
+        cursor: pointer;
+        line-height: 1;
+      }
       .hero, section, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-photo { display: none; }
@@ -621,17 +638,33 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-close" id="mobile-close">&#215;</button>
+    <a href="#about">About</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </div>
+
   <script>
     const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileClose = document.getElementById('mobile-close');
+
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
-      navLinks.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
     });
-    navLinks.querySelectorAll('a').forEach(a => {
+    mobileClose.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
+        mobileMenu.classList.remove('open');
       });
     });
   </script>

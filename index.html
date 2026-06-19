@@ -771,10 +771,12 @@
           const btn = this.querySelector('.form-submit');
           btn.textContent = 'Sending...';
           btn.disabled = true;
+          const name = document.getElementById('name').value.trim();
+          const message = document.getElementById('message').value.trim();
           const res = await fetch(this.action, {
             method: 'POST',
-            body: new FormData(this),
-            headers: { 'Accept': 'application/json' }
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ name, email, message })
           });
           if (res.ok) {
             btn.textContent = 'Send message';

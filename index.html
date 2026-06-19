@@ -737,32 +737,28 @@
           </div>
         </div>
       </div>
-      <form class="contact-form" id="contact-form" novalidate action="https://formsubmit.co/5fc6de940fa25e7dd89841977faf9ef8" method="POST">
+      <form class="contact-form" id="contact-form" novalidate>
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required>
+          <input type="text" id="name" placeholder="Your name">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com">
+          <input type="email" id="email" placeholder="your@email.com">
           <span id="email-error" style="display:none;color:#c0392b;font-size:0.82rem;margin-top:0.3rem;">Invalid email</span>
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" placeholder="How can I help you?" required></textarea>
+          <textarea id="message" rows="5" placeholder="How can I help you?"></textarea>
         </div>
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New message from your website">
-        <input type="hidden" name="_next" value="https://chaowenpages.github.io/#contact">
         <button type="submit" class="form-submit">Send message</button>
       </form>
       <script>
         document.getElementById('contact-form').addEventListener('submit', async function(e) {
           e.preventDefault();
           const email = document.getElementById('email').value.trim();
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           const emailError = document.getElementById('email-error');
-          if (!emailRegex.test(email)) {
+          if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             emailError.style.display = 'block';
             document.getElementById('email').focus();
             return;
@@ -771,20 +767,25 @@
           const btn = this.querySelector('.form-submit');
           btn.textContent = 'Sending...';
           btn.disabled = true;
-          const res = await fetch(this.action, {
-            method: 'POST',
-            body: new FormData(this),
-            headers: { 'Accept': 'application/json' }
-          });
-          if (res.ok) {
-            btn.textContent = 'Send message';
-            btn.disabled = false;
-            this.reset();
-            document.getElementById('success-dialog').style.display = 'flex';
-          } else {
-            btn.textContent = 'Failed. Try again.';
-            btn.disabled = false;
+          try {
+            await fetch('https://formsubmit.co/ajax/elaine.cai@compass.com', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify({
+                name: document.getElementById('name').value.trim() || 'Not provided',
+                email,
+                message: document.getElementById('message').value.trim(),
+                _subject: 'New message from Chao Wen website',
+                _template: 'table'
+              })
+            });
+          } catch(err) {
+            console.error('Form error', err);
           }
+          this.reset();
+          document.getElementById('success-dialog').style.display = 'flex';
+          btn.textContent = 'Send message';
+          btn.disabled = false;
         });
       </script>
     </div>

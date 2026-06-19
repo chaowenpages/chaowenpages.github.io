@@ -752,7 +752,13 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;flex-shrink:0;margin-top:2px"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
             <div>
               <span class="contact-item-label">Email</span>
-              <a class="contact-item-value" href="mailto:chao.wen@compass.com">chao.wen@compass.com</a>
+              <span style="display:flex;align-items:center;gap:0.5rem;font-size:0.95rem;color:var(--black);cursor:default;">
+                chao.wen@compass.com
+                <span style="position:relative;display:inline-flex;align-items:center;">
+                  <svg onclick="navigator.clipboard.writeText('chao.wen@compass.com').then(()=>{const t=this.nextElementSibling;t.style.opacity='1';setTimeout(()=>t.style.opacity='0',1500)})" style="cursor:pointer;opacity:0.45;flex-shrink:0;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span style="position:absolute;left:50%;transform:translateX(-50%);top:-1.8rem;background:#111;color:#fff;font-size:0.68rem;padding:0.15rem 0.45rem;pointer-events:none;opacity:0;transition:opacity 0.3s;white-space:nowrap;">Copied</span>
+                </span>
+              </span>
             </div>
           </div>
           <div class="contact-item">

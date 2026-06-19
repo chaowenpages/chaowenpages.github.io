@@ -619,9 +619,11 @@
       }
       .hero, section, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
       section { padding-top: 4rem; padding-bottom: 4rem; }
-      .hero { min-height: 100svh; padding-top: 4rem; }
-      .hero-bg video { object-position: center center; height: 100%; width: 100%; }
-      .hero-bg::after { background: rgba(0,0,0,0.55); }
+      .hero { min-height: unset; aspect-ratio: 16/9; padding-top: 0; }
+      .hero-bg { background-size: contain; background-color: #000; }
+      .hero-bg video { display: none; }
+      .hero-bg::after { background: rgba(0,0,0,0.35); }
+      .hero-contact-cta { font-size: 0.8rem; padding: 0.6rem 1rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .about-photo { display: block; aspect-ratio: 1/1; width: 200px; }
       .about-photo img { object-position: top center; }

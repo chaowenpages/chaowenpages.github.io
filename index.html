@@ -610,14 +610,20 @@
         line-height: 1;
       }
       .hero, section, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      section { padding-top: 4rem; padding-bottom: 4rem; }
       .hero { min-height: 100svh; padding-top: 4rem; }
       .hero-bg video { object-position: center center; height: 100%; width: 100%; }
       .hero-bg::after { background: rgba(0,0,0,0.55); }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .about-photo { display: none; }
+      .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 2rem; padding-top: 2rem; }
+      .about-stats > div { padding-right: 1rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .expertise-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-submit { align-self: stretch; width: 100%; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .footer-links { justify-content: center; }
       .hero-contact-cta {
         left: 1.5rem;
         right: 1.5rem;
@@ -626,6 +632,13 @@
         font-size: 0.95rem;
         padding: 0.8rem 1rem;
       }
+    }
+
+    @media (max-width: 480px) {
+      .hero-name { font-size: 2.8rem; }
+      .section-title { font-size: 1.8rem; }
+      .stat-number { font-size: 1.6rem; }
+      .contact-details { gap: 1rem; }
     }
   </style>
 </head>

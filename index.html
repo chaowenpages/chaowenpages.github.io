@@ -267,7 +267,7 @@
 
     /* ABOUT */
     #about {
-      background: var(--light);
+      background: var(--white);
     }
 
     .about-grid {
@@ -363,7 +363,7 @@
 
     .expertise-card {
       padding: 3rem 2.5rem;
-      background: var(--light);
+      background: var(--white);
       transition: background 0.3s;
     }
 
@@ -394,11 +394,11 @@
 
     /* TESTIMONIALS */
     #testimonials {
-      background: var(--black);
-      color: var(--white);
+      background: var(--white);
+      color: var(--black);
     }
 
-    #testimonials .section-title { color: var(--white); }
+    #testimonials .section-title { color: var(--black); }
 
     .testimonials-grid {
       display: grid;
@@ -408,7 +408,7 @@
     }
 
     .testimonial {
-      border-top: 1px solid rgba(255,255,255,0.15);
+      border-top: 1px solid rgba(0,0,0,0.1);
       padding-top: 2rem;
     }
 
@@ -418,7 +418,7 @@
       font-weight: 300;
       font-style: italic;
       line-height: 1.65;
-      color: rgba(255,255,255,0.85);
+      color: #444;
       margin-bottom: 1.5rem;
     }
 
@@ -431,7 +431,7 @@
 
     /* CONTACT */
     #contact {
-      background: var(--light);
+      background: var(--white);
     }
 
     .contact-grid {
@@ -534,7 +534,8 @@
     /* FOOTER */
     footer {
       background: var(--black);
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.5);
+      border-top: none;
       padding: 2rem 3rem;
       display: flex;
       justify-content: space-between;
@@ -549,7 +550,7 @@
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
     }
 
@@ -560,7 +561,7 @@
     }
 
     .footer-links a {
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.5);
       text-decoration: none;
       letter-spacing: 0.12em;
       transition: color 0.2s;
@@ -637,8 +638,6 @@
     </button>
     <ul class="nav-links" id="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -647,8 +646,6 @@
   <div class="mobile-menu" id="mobile-menu">
     <button class="mobile-close" id="mobile-close">&#215;</button>
     <a href="#about">About</a>
-    <a href="#expertise">Expertise</a>
-    <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
   </div>
 
@@ -687,13 +684,16 @@
   <section id="about">
     <div class="about-grid">
       <div class="about-photo">
-        <div class="about-photo-placeholder">Photo</div>
+        <img src="images/profile.webp" alt="Chao Wen">
       </div>
       <div class="about-text">
         <p class="section-label">About</p>
-        <h2 class="section-title">Who is<br>Chao Wen?</h2>
-        <p>With a passion for building lasting relationships and delivering exceptional outcomes, Chao Wen brings dedication and expertise to every endeavor. Known for a thoughtful approach and meticulous attention to detail, Chao Wen is committed to making every experience seamless and rewarding.</p>
-        <p>Whether navigating complex challenges or celebrating milestones together, clients can count on clear communication, honest guidance, and results that speak for themselves.</p>
+        <h2 class="section-title">Chao Wen</h2>
+        <p style="font-size:0.82rem;letter-spacing:0.08em;color:var(--gray);margin-bottom:1.5rem;">REALTOR® | DRE# 02069317</p>
+        <p>Chao is an agent who knows how to get the job done, get a good deal, and is responsive to all your real estate needs. Providing you prompt service, personal guidance, and professional competence from contract to settlement.</p>
+        <p>As a real estate specialist, Chao knows what it takes to sell a home. He brings expert knowledge, valuable experience blended with the latest technology, a well-defined marketing plan, a cohesive network, energy, enthusiasm, and the excitement of a job well done.</p>
+        <p>Detailed home evaluation report and advice on the best price to list your home, vast exposure to your listing, virtual tours to distinguish your listing, personal consultation, relocation, and everything you need to know about the neighborhood and transferring utilities.</p>
+        <p>If you are planning to place your home on the market, contact Chao for valuable information on preparing your home for sale, pricing your home right, marketing it effectively, and the home inspection processes. He is passionate about his job and keeps up with the latest trends and strategies so that he can pass them on to his clients.</p>
         <div class="about-stats">
           <div>
             <div class="stat-number">5+</div>
@@ -712,50 +712,7 @@
     </div>
   </section>
 
-  <!-- EXPERTISE -->
-  <section id="expertise">
-    <div class="expertise-header">
-      <p class="section-label">Expertise</p>
-      <h2 class="section-title">What I bring<br>to the table</h2>
-    </div>
-    <div class="expertise-grid">
-      <div class="expertise-card">
-        <div class="card-number">01</div>
-        <h3 class="card-title">Strategic Thinking</h3>
-        <p class="card-desc">A data-driven, analytical approach that uncovers opportunities others overlook and turns insight into clear, actionable plans.</p>
-      </div>
-      <div class="expertise-card">
-        <div class="card-number">02</div>
-        <h3 class="card-title">Client Focus</h3>
-        <p class="card-desc">Every client's goals are unique. Personalized attention and tailored solutions ensure the right outcome for every situation.</p>
-      </div>
-      <div class="expertise-card">
-        <div class="card-number">03</div>
-        <h3 class="card-title">Proven Results</h3>
-        <p class="card-desc">A consistent track record of exceeding expectations, built on trust, transparency, and a relentless drive to deliver.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
-    <p class="section-label" style="color: var(--accent);">Testimonials</p>
-    <h2 class="section-title">What clients say</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial">
-        <p class="testimonial-quote">"Chao Wen made the entire process effortless. Their professionalism and attention to detail gave us complete confidence from start to finish."</p>
-        <p class="testimonial-author">— Sarah & David L.</p>
-      </div>
-      <div class="testimonial">
-        <p class="testimonial-quote">"I was impressed by the level of care and expertise. Every question was answered, every concern addressed. Truly an exceptional experience."</p>
-        <p class="testimonial-author">— Michael T.</p>
-      </div>
-      <div class="testimonial">
-        <p class="testimonial-quote">"We felt supported every step of the way. Chao Wen's dedication and knowledge made all the difference. We couldn't be happier with the outcome."</p>
-        <p class="testimonial-author">— Jennifer K.</p>
-      </div>
-    </div>
-  </section>
 
   <!-- CONTACT -->
   <section id="contact">
@@ -799,11 +756,10 @@
 
   <!-- FOOTER -->
   <footer>
-    <a href="#" class="footer-logo">Chao Wen</a>
+    <p style="font-size:0.72rem;color:rgba(255,255,255,0.35);">Last updated: June 18, 2026</p>
     <span>© 2026 Chao Wen. All rights reserved.</span>
     <ul class="footer-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#expertise">Expertise</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </footer>
